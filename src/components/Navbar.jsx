@@ -1,38 +1,59 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { HiMenuAlt3, HiX } from 'react-icons/hi'
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
 
 const navLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Tracks', href: '#tracks' },
-  { name: 'Schedule', href: '#schedule' },
-  { name: 'Prizes', href: '#prizes' },
-  { name: 'Judges', href: '#judges' },
-  { name: 'FAQ', href: '#faq' },
-]
+  { name: "About", href: "#about" },
+  { name: "Tracks", href: "#tracks" },
+  { name: "Schedule", href: "#schedule" },
+  { name: "Prizes", href: "#prizes" },
+  { name: "Judges", href: "#judges" },
+  { name: "FAQ", href: "#faq" },
+];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      setScrolled(currentScrollY > 50);
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setShowNavbar(false); // scrolling down
+      } else {
+        setShowNavbar(true); // scrolling up
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [lastScrollY]);
 
   return (
     <motion.nav
       initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-          ? 'bg-charcoal-900/90 backdrop-blur-xl border-b border-kintsugi-gold/20 shadow-lg shadow-kintsugi-gold/5'
-          : 'bg-transparent'
-        }`}
+      animate={{ y: showNavbar ? 0 : -120 }}
+      transition={{ duration: 0.35 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-charcoal-900/90 backdrop-blur-xl border-b border-kintsugi-gold/20 shadow-lg shadow-kintsugi-gold/5"
+          : "bg-transparent"
+      }`}
     >
-      <div className="section-container py-6 flex items-center justify-between " style={{marginTop:"2rem", marginBottom:"2rem"}}>
-        <a href="#" className="flex items-center gap-2 " style={{marginBottom:"1rem"}}>
+      <div
+        className="section-container py-6 flex items-center justify-between"
+        style={{ marginTop: "2rem", marginBottom: "2rem" }}
+      >
+        <a href="#" className="flex items-center gap-2" style={{ marginBottom: "1rem" }}>
           <span className="font-heading text-2xl md:text-3xl font-bold text-kintsugi-gold tracking-wider">
             CODE<span className="text-white">FORGE</span>
           </span>
@@ -49,6 +70,7 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
+
           <a
             href="#register"
             className="px-6 py-2.5 bg-kintsugi-gold/10 border border-kintsugi-gold/40 text-kintsugi-gold rounded-lg text-base font-semibold hover:bg-kintsugi-gold/20 hover:border-kintsugi-gold/60 transition-all duration-300 hover:shadow-[0_0_15px_rgba(212,168,67,0.3)]"
@@ -72,7 +94,7 @@ export default function Navbar() {
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-charcoal-800/95 backdrop-blur-xl border-b border-kintsugi-gold/20"
           >
@@ -87,6 +109,7 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
+
               <a
                 href="#register"
                 onClick={() => setMobileOpen(false)}
@@ -99,5 +122,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </motion.nav>
-  )
+  );
 }
