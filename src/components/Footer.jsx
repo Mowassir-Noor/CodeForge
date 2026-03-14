@@ -2,11 +2,11 @@ import { FaXTwitter, FaDiscord, FaGithub, FaLinkedin, FaInstagram } from 'react-
 import { HiOutlineMail, HiOutlineLocationMarker } from 'react-icons/hi'
 
 const socialLinks = [
-  { icon: <FaXTwitter />, href: '#', label: 'Twitter/X' },
-  { icon: <FaDiscord />, href: '#', label: 'Discord' },
-  { icon: <FaGithub />, href: '#', label: 'GitHub' },
-  { icon: <FaLinkedin />, href: '#', label: 'LinkedIn' },
-  { icon: <FaInstagram />, href: '#', label: 'Instagram' },
+  { icon: <FaXTwitter />, href: 'https://x.com/GaziCyber', label: 'Twitter/X' },
+  // { icon: <FaDiscord />, href: '#', label: 'Discord' },
+  { icon: <FaGithub />, href: 'https://github.com/gazicyber', label: 'GitHub' },
+  { icon: <FaLinkedin />, href: 'https://www.linkedin.com/company/gazicyber/posts/?feedView=all', label: 'LinkedIn' },
+  { icon: <FaInstagram />, href: 'https://www.instagram.com/gazicyber/', label: 'Instagram' },
 ]
 
 export default function Footer() {
@@ -67,18 +67,18 @@ export default function Footer() {
             </h4>
             <div className="space-y-4">
               <a
-                href="mailto:hello@codeforge.dev"
+                href="mailto:gazicyber@gmail.com"
                 className="flex items-center gap-3 text-gray-500 text-base hover:text-kintsugi-gold transition-colors duration-300 py-1"
               >
                 <HiOutlineMail className="text-xl shrink-0" />
-                hello@codeforge.dev
+               gazicyber@gmail.com
               </a>
               <div className="flex items-start gap-3 text-gray-500 text-base">
                 <HiOutlineLocationMarker className="text-xl shrink-0 mt-1" />
                 <div className="space-y-1">
                   <p>Innovation Hub</p>
-                  <p>123 Tech Boulevard</p>
-                  <p>San Francisco, CA 94105</p>
+                  <p>Gazi University</p>
+                  <p>Ankara, Turkey</p>
                 </div>
               </div>
             </div>
