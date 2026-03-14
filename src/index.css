@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kintsugi-gold: #D4A843;
+  --color-kintsugi-light: #F0D78C;
+  --color-kintsugi-dark: #8B7335;
+  --color-kintsugi-glow: #FFD700;
+  --color-charcoal-900: #0A0A0A;
+  --color-charcoal-800: #121212;
+  --color-charcoal-700: #1A1A1A;
+  --color-charcoal-600: #222222;
+  --color-charcoal-500: #2A2A2A;
+  --color-charcoal-400: #333333;
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-charcoal-900);
+  color: #e0e0e0;
+  overflow-x: hidden;
+}
+
+/* Centered section container */
+.section-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* Readable prose width */
+.prose-width {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* Section spacing */
+.section-spacing {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+/* Section header block */
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.section-header p.section-label {
+  color: var(--color-kintsugi-gold);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-header .section-desc {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+  color: #9ca3af;
+  line-height: 1.75;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+/* Gold Kintsugi crack divider */
+.kintsugi-divider {
+  position: relative;
+  height: 4px;
+  background: transparent;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  max-width: 80%;
+  overflow: visible;
+}
+
+.kintsugi-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-kintsugi-dark) 10%,
+    var(--color-kintsugi-gold) 30%,
+    var(--color-kintsugi-glow) 50%,
+    var(--color-kintsugi-gold) 70%,
+    var(--color-kintsugi-dark) 90%,
+    transparent 100%
+  );
+  filter: blur(0.5px);
+  box-shadow:
+    0 0 10px var(--color-kintsugi-gold),
+    0 0 20px rgba(212, 168, 67, 0.5),
+    0 0 40px rgba(212, 168, 67, 0.2);
+}
+
+.kintsugi-divider::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 20%,
+    rgba(255, 215, 0, 0.3) 50%,
+    transparent 80%,
+    transparent 100%
+  );
+  filter: blur(4px);
+}
+
+/* Glowing gold text */
+.gold-glow {
+  text-shadow:
+    0 0 10px rgba(212, 168, 67, 0.8),
+    0 0 20px rgba(212, 168, 67, 0.4),
+    0 0 40px rgba(212, 168, 67, 0.2);
+}
+
+/* Card hover glow */
+.card-gold-border {
+  border: 1px solid rgba(212, 168, 67, 0.15);
+  transition: all 0.4s ease;
+}
+.card-gold-border:hover {
+  border-color: rgba(212, 168, 67, 0.5);
+  box-shadow:
+    0 0 15px rgba(212, 168, 67, 0.15),
+    0 0 30px rgba(212, 168, 67, 0.05);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-charcoal-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-kintsugi-dark);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-kintsugi-gold);
+}
+
+/* Hero crack animations */
+@keyframes crack-glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(212,168,67,0.6)); opacity: 0.7; }
+  50% { filter: drop-shadow(0 0 12px rgba(255,215,0,0.9)); opacity: 1; }
+}
+
+@keyframes float-crack {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-0.5deg); }
+}
+
+.animate-float-crack {
+  animation: float-crack 8s ease-in-out infinite;
+}
+
+@keyframes particle-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(-120vh) scale(0); opacity: 0; }
+}
