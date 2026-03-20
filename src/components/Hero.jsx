@@ -245,10 +245,9 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.7 }}
           style={{ marginBottom: "2" }}>
-          Where innovators embrace imperfection. Shatter boundaries, fill the cracks
-          with gold, and rebuild ideas stronger than before. Inspired by{' '}
-          <span className="text-kintsugi-gold font-medium">Kintsugi</span> — the art
-          of golden repair.
+       Where broken ideas become breakthroughs. Push beyond limits, embrace every flaw,
+and rebuild stronger than before. Inspired by{' '}
+<span className="text-kintsugi-gold font-medium">imperfection</span> — the origin of innovation.
         </motion.p>
 
         {/* <motion.div

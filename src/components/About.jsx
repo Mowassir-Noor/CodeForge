@@ -39,7 +39,7 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <AnimatedSection>
             <div className="space-y-6 prose-width mx-auto">
-              <p className="text-gray-300 text-base md:text-lg leading-[1.8]">
+              {/* <p className="text-gray-300 text-base md:text-lg leading-[1.8]">
                 CodeForge is a 48-hour hackathon that embraces the philosophy of{' '}
                 <span className="text-kintsugi-gold font-semibold">Kintsugi</span> — the
                 Japanese art of repairing broken pottery with gold, treating breakage as part
@@ -54,7 +54,24 @@ export default function About() {
                 Whether you're a seasoned developer or a first-time hacker, CodeForge provides
                 the tools, mentorship, and community to transform your bold ideas into reality.
                 Every crack is an opportunity. Every repair makes you stronger.
-              </p>
+              </p> */}
+              <p className="text-gray-300 text-base md:text-lg leading-[1.8]">
+  CodeForge is a hackathon designed to bring together creative minds to build,
+  experiment, and innovate. It’s a space where ideas take shape through collaboration,
+  curiosity, and hands-on problem solving.
+</p>
+
+<p className="text-gray-400 leading-[1.8]">
+  Participants from different backgrounds come together to explore new technologies,
+  share knowledge, and create impactful solutions. It’s an opportunity to learn,
+  connect, and push your skills further in a supportive environment.
+</p>
+
+<p className="text-gray-400 leading-[1.8]">
+  Whether you're an experienced developer or just starting out, CodeForge provides
+  the resources and community to help you turn your ideas into reality. Build,
+  learn, and grow throughout the experience.
+</p>
             </div>
           </AnimatedSection>
 
