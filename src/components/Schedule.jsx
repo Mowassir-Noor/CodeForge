@@ -3,33 +3,108 @@ import { useRef } from 'react'
 
 const scheduleData = [
   {
-    day: 'Day 1 — March 28',
+    day: 'Day 1 — May 8 (Friday)',
     events: [
-      { time: '09:00 AM', title: 'Registration & Check-in', desc: 'Get your badges, swag, and find your station.' },
-      { time: '10:30 AM', title: 'Opening Ceremony', desc: 'Keynote speakers and track announcements.' },
-      { time: '12:00 PM', title: 'Hacking Begins!', desc: 'Teams form and the 48-hour clock starts.' },
-      { time: '02:00 PM', title: 'Workshop: AI/ML Foundations', desc: 'Hands-on session with industry experts.' },
-      { time: '06:00 PM', title: 'Dinner & Networking', desc: 'Fuel up and connect with fellow hackers.' },
+      {
+        time: '17:30 - 19:00',
+        title: 'Registration & Check-in',
+        desc: 'Accreditation and QR registration process.',
+      },
+      {
+        time: '19:00 - 20:00',
+        title: 'Opening Dinner & Networking',
+        desc: 'Meet and connect with participants.',
+      },
+      {
+        time: '20:00 - 21:00',
+        title: 'CodeForge Presentation',
+        desc: 'Vision presentation and technical briefing.',
+      },
+      {
+        time: '21:00 - 21:30',
+        title: 'Hackathon Kickoff',
+        desc: 'Start of vulnerability analysis and hacking.',
+      },
+      {
+        time: '21:30 - 22:30',
+        title: 'Mentor Matching',
+        desc: 'Initial round of mentor-table visits.',
+      },
+      {
+        time: '01:00 - 01:30',
+        title: 'Late Night Snacks',
+        desc: 'Refreshments and continued hacking.',
+      },
     ],
   },
   {
-    day: 'Day 2 — March 29',
+    day: 'Day 2 — May 9 (Saturday)',
     events: [
-      { time: '08:00 AM', title: 'Breakfast & Checkpoint', desc: 'Morning fuel and progress updates.' },
-      { time: '10:00 AM', title: 'Mentor Office Hours', desc: 'One-on-one guidance from industry mentors.' },
-      { time: '01:00 PM', title: 'Workshop: Pitch Perfect', desc: 'Learn to present your project like a pro.' },
-      { time: '04:00 PM', title: 'Mini Demos', desc: 'Share early progress with other teams.' },
-      { time: '09:00 PM', title: 'Late Night Hack Session', desc: 'Pizza, energy drinks, and peak creativity.' },
+      {
+        time: '09:00 - 10:00',
+        title: 'Breakfast',
+        desc: 'Start your day with breakfast.',
+      },
+      {
+        time: '11:00 - 13:00',
+        title: 'Mentorship Session I',
+        desc: 'Architecture and improvement strategies.',
+      },
+      {
+        time: '13:00 - 14:00',
+        title: 'Lunch Break',
+        desc: 'Food and rest.',
+      },
+      {
+        time: '15:00 - 18:00',
+        title: 'Mentorship Session II',
+        desc: 'Refactoring and development process.',
+      },
+      {
+        time: '18:30 - 20:00',
+        title: 'Dinner',
+        desc: 'Evening meal and networking.',
+      },
+      {
+        time: '01:00 - 01:30',
+        title: 'Late Night Snacks & Networking',
+        desc: 'Midnight refreshments and social time.',
+      },
     ],
   },
   {
-    day: 'Day 3 — March 30',
+    day: 'Day 3 — May 10 (Sunday)',
     events: [
-      { time: '08:00 AM', title: 'Final Sprint', desc: 'Last hours to polish your project.' },
-      { time: '12:00 PM', title: 'Hacking Ends', desc: 'Code freeze! Submit your projects.' },
-      { time: '01:00 PM', title: 'Final Presentations', desc: 'Teams present to judges and attendees.' },
-      { time: '04:00 PM', title: 'Awards Ceremony', desc: 'Winners announced and prizes awarded.' },
-      { time: '05:30 PM', title: 'Closing & Celebration', desc: 'Final remarks and after-party begins!' },
+      {
+        time: '09:00 - 10:00',
+        title: 'Breakfast',
+        desc: 'Start your day.',
+      },
+      {
+        time: '10:00 - 12:30',
+        title: 'Mentorship Session III',
+        desc: 'Final checks and stabilization.',
+      },
+      {
+        time: '12:30 - 13:30',
+        title: 'Lunch Break',
+        desc: 'Food and rest.',
+      },
+      {
+        time: '14:00 - 14:30',
+        title: 'Code Freeze',
+        desc: 'Final submission and system lock.',
+      },
+      {
+        time: '14:30 - 18:00',
+        title: 'Judging & Demos',
+        desc: '“Before & After” project presentations.',
+      },
+      {
+        time: '18:00 - 19:00',
+        title: 'Awards Ceremony',
+        desc: 'Closing ceremony and prize distribution.',
+      },
     ],
   },
 ]
@@ -60,7 +135,7 @@ export default function Schedule() {
           </p>
         </motion.div>
 
-        <div className="space-y-12 max-w-5xl mx-auto w-full">
+        <div className="space-y-12 max-w-5xl mx-auto w-full " >
           {scheduleData.map((day, dayIdx) => (
             <motion.div
               key={day.day}
@@ -72,11 +147,11 @@ export default function Schedule() {
                 {day.day}
               </h3>
 
-              <div className="relative ml-4">
+              <div className="relative ml-4 " >
                 {/* Timeline line */}
                 <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-kintsugi-gold/40 via-kintsugi-gold/20 to-transparent" />
 
-                <div className="space-y-1">
+                <div className="space-y-1 " >
                   {day.events.map((event, i) => (
                     <motion.div
                       key={event.title}
