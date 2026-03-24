@@ -1,8 +1,10 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Countdown from './Countdown'
+import { useTranslation } from 'react-i18next'
 
 export default function Register() {
+  const { t } = useTranslation();
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -23,14 +25,13 @@ export default function Register() {
           transition={{ duration: 0.8 }}
         >
           <p className="text-kintsugi-gold font-mono text-sm tracking-[0.2em] uppercase mb-4">
-            Join the Forge
+            {t('register.label')}
           </p>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6"style={{marginTop: '2rem'}}>
-            Ready to <span className="text-kintsugi-gold gold-glow">Reforge</span> the Future?
+            {t('register.title1')} <span className="text-kintsugi-gold gold-glow">{t('register.title2')}</span>{t('register.title3')}
           </h2>
           <p className="text-gray-400 text-base md:text-lg prose-width mx-auto mb-12 leading-[1.8] text-center" style={{ marginBottom: '2rem' , marginTop: '2rem'}}>
-            48 hours of building, breaking, and rebuilding stronger. Join 500+ innovators
-            who believe that the best creations come from embracing imperfection.
+            {t('register.desc')}
           </p>
 
           <motion.div
@@ -43,29 +44,29 @@ export default function Register() {
               <div className="flex items-center gap-4 text-left " style={{ marginTop: '0.5rem', marginLeft: '2rem' }}>
                 <span className="font-heading text-3xl text-kintsugi-gold">📅</span>
                 <div>
-                  <p className="text-white font-semibold">May 08 — 10, 2026</p>
-                  <p className="text-gray-500 text-sm">48 hours of having fun</p>
+                  <p className="text-white font-semibold">{t('register.date')}</p>
+                  <p className="text-gray-500 text-sm">{t('register.dateDesc')}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-left"style={{ marginTop: '0.5rem', marginLeft: '2rem' }}>
                 <span className="font-heading text-3xl text-kintsugi-gold">📍</span>
                 <div>
-                  <p className="text-white font-semibold">Ankara, Turkey</p>
-                  <p className="text-gray-500 text-sm">In-Person at Ankara, Turkey</p>
+                  <p className="text-white font-semibold">{t('register.loc')}</p>
+                  <p className="text-gray-500 text-sm">{t('register.locDesc')}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-left"style={{ marginTop: '0.5rem', marginLeft: '2rem' }}>
                 <span className="font-heading text-3xl text-kintsugi-gold">💰</span>
                 <div>
-                  <p className="text-white font-semibold">$50,000+ in Prizes</p>
-                  <p className="text-gray-500 text-sm">Plus mentorship, credits & swag</p>
+                  <p className="text-white font-semibold">{t('register.prize')}</p>
+                  <p className="text-gray-500 text-sm">{t('register.prizeDesc')}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-left"style={{ marginTop: '0.5rem' , marginLeft: '2rem'}}>
                 <span className="font-heading text-3xl text-kintsugi-gold">🎟️</span>
                 <div style={{ marginTop: '0.5rem' }}>
-                  <p className="text-white font-semibold">Free Registration (Ends on May 01)</p>
-                  <p className="text-gray-500 text-sm">Open to all skill levels</p>
+                  <p className="text-white font-semibold">{t('register.free')}</p>
+                  <p className="text-gray-500 text-sm">{t('register.freeDesc')}</p>
                 </div>
               </div>
             </div>
@@ -77,11 +78,8 @@ export default function Register() {
                 rel="noopener noreferrer"
                 className="block w-full py-4 bg-gradient-to-r from-kintsugi-dark via-kintsugi-gold to-kintsugi-dark text-charcoal-900 font-heading font-bold text-base tracking-wider rounded-lg text-center hover:shadow-[0_0_30px_rgba(212,168,67,0.4)] transition-all duration-500 hover:scale-[1.02]"
               style={{marginBottom:"1rem"}}>
-                REGISTER NOW — IT'S FREE
+                {t('register.regBtn')}
               </a>
-              {/* <p className="text-gray-600 text-xs text-center">
-                Limited to 500 participants. Spots fill up fast.
-              </p> */}
             </div>
           </motion.div>
 

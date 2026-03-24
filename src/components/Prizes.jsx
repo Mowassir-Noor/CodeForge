@@ -1,38 +1,40 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { HiOutlineStar, HiOutlineTrophy } from 'react-icons/hi2'
-
-const prizes = [
-  {
-    place: '1st Place',
-    amount: '$20,000',
-    perks: ['Cloud credits ($5K)', 'Mentorship program', 'Conference tickets', 'Trophy & certificate'],
-    highlight: true,
-  },
-  {
-    place: '2nd Place',
-    amount: '$15,000',
-    perks: ['Cloud credits ($3K)', 'Hardware kit', 'Conference tickets', 'Certificate'],
-    highlight: false,
-  },
-  {
-    place: '3rd Place',
-    amount: '$10,000',
-    perks: ['Cloud credits ($1K)', 'Premium subscriptions', 'Conference tickets', 'Certificate'],
-    highlight: false,
-  },
-]
-
-const specialPrizes = [
-  { title: 'Best UI/UX', amount: '$2,000' },
-  { title: 'Most Innovative', amount: '$2,000' },
-  { title: 'Best Use of AI', amount: '$1,500' },
-  { title: "People's Choice", amount: '$1,500' },
-]
+import { useTranslation } from 'react-i18next'
 
 export default function Prizes() {
+  const { t } = useTranslation();
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  const prizes = [
+    {
+      place: t('prizes.p1st'),
+      amount: '$20,000',
+      perks: [t('prizes.cloud5k'), t('prizes.mentorship'), t('prizes.confTix'), t('prizes.trophy')],
+      highlight: true,
+    },
+    {
+      place: t('prizes.p2nd'),
+      amount: '$15,000',
+      perks: [t('prizes.cloud3k'), t('prizes.hardware'), t('prizes.confTix'), t('prizes.cert')],
+      highlight: false,
+    },
+    {
+      place: t('prizes.p3rd'),
+      amount: '$10,000',
+      perks: [t('prizes.cloud1k'), t('prizes.premiumSub'), t('prizes.confTix'), t('prizes.cert')],
+      highlight: false,
+    },
+  ]
+
+  const specialPrizes = [
+    { title: t('prizes.sp1'), amount: '$2,000' },
+    { title: t('prizes.sp2'), amount: '$2,000' },
+    { title: t('prizes.sp3'), amount: '$1,500' },
+    { title: t('prizes.sp4'), amount: '$1,500' },
+  ]
 
   return (
     <section id="prizes" className="relative section-spacing bg-charcoal-800/30">
@@ -46,10 +48,10 @@ export default function Prizes() {
           transition={{ duration: 0.8 }}
         >
           <p className="section-label text-kintsugi-gold font-mono text-sm tracking-[0.2em] uppercase mb-4">
-            What You Win
+            {t('prizes.label')}
           </p>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Prize <span className="text-kintsugi-gold gold-glow">Pool</span>
+            {t('prizes.title1')} <span className="text-kintsugi-gold gold-glow">{t('prizes.title2')}</span>
           </h2>
           <p className="font-heading text-5xl md:text-6xl font-black text-kintsugi-gold gold-glow">
             $50,000+
@@ -105,7 +107,7 @@ export default function Prizes() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <h3 className="font-heading text-lg md:text-xl font-bold text-center text-white  " style={{ marginTop: '2rem', marginBottom: '2rem' }}>
-            Special Category Awards
+            {t('prizes.spec')}
           </h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 max-w-3xl ">
             {specialPrizes.map((sp) => (

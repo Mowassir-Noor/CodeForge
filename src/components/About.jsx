@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 function AnimatedSection({ children, className = '' }) {
   const ref = useRef(null)
@@ -20,6 +21,8 @@ function AnimatedSection({ children, className = '' }) {
 }
 
 export default function About() {
+  const { t } = useTranslation();
+
   return (
     <section id="about" className="relative section-spacing bg-charcoal-900">
       <div className="kintsugi-divider mb-16 md:mb-20" />
@@ -28,10 +31,10 @@ export default function About() {
         <AnimatedSection>
           <div className="section-header">
             <p className="section-label text-kintsugi-gold font-mono text-sm tracking-[0.2em] uppercase mb-4">
-              About the Event
+              {t('about.label')}
             </p>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-              What is <span className="text-kintsugi-gold gold-glow">CodeForge</span>?
+              {t('about.title1')}<span className="text-kintsugi-gold gold-glow">{t('about.title2')}</span>
             </h2>
           </div>
         </AnimatedSection>
@@ -39,38 +42,16 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <AnimatedSection>
             <div className="space-y-6 prose-width mx-auto">
-              {/* <p className="text-gray-300 text-base md:text-lg leading-[1.8]">
-                CodeForge is a 48-hour hackathon that embraces the philosophy of{' '}
-                <span className="text-kintsugi-gold font-semibold">Kintsugi</span> — the
-                Japanese art of repairing broken pottery with gold, treating breakage as part
-                of an object's history rather than something to disguise.
-              </p>
-              <p className="text-gray-400 leading-[1.8]">
-                We believe that the best innovations come from breaking existing paradigms and
-                rebuilding them into something stronger and more beautiful. Join 500+ developers,
-                designers, and innovators as they shatter convention and forge the future.
-              </p>
-              <p className="text-gray-400 leading-[1.8]">
-                Whether you're a seasoned developer or a first-time hacker, CodeForge provides
-                the tools, mentorship, and community to transform your bold ideas into reality.
-                Every crack is an opportunity. Every repair makes you stronger.
-              </p> */}
               <p className="text-gray-300 text-base md:text-lg leading-[1.8]">
-  CodeForge is a hackathon designed to bring together creative minds to build,
-  experiment, and innovate. It’s a space where ideas take shape through collaboration,
-  curiosity, and hands-on problem solving.
+  {t('about.desc1')}
 </p>
 
 <p className="text-gray-400 leading-[1.8]">
-  Participants from different backgrounds come together to explore new technologies,
-  share knowledge, and create impactful solutions. It’s an opportunity to learn,
-  connect, and push your skills further in a supportive environment.
+  {t('about.desc2')}
 </p>
 
 <p className="text-gray-400 leading-[1.8]">
-  Whether you're an experienced developer or just starting out, CodeForge provides
-  the resources and community to help you turn your ideas into reality. Build,
-  learn, and grow throughout the experience.
+  {t('about.desc3')}
 </p>
             </div>
           </AnimatedSection>
@@ -78,10 +59,10 @@ export default function About() {
           <AnimatedSection>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
               {[
-                { number: '500+', label: 'Hackers' },
-                { number: '48h', label: 'Of Hacking' },
-                { number: '$50K', label: 'In Prizes' },
-                { number: '30+', label: 'Mentors' },
+                { number: '500+', label: t('about.statHackers') },
+                { number: '48', label: t('about.statHours') },
+                { number: '$50K', label: t('about.statPrizes') },
+                { number: '30+', label: t('about.statMentors') },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -105,18 +86,18 @@ export default function About() {
             {[
               {
                 icon: '破',
-                title: 'Break',
-                desc: 'Challenge the status quo. Break apart old ideas and explore uncharted territory.',
+                title: t('about.kintsugi1Title'),
+                desc: t('about.kintsugi1Desc'),
               },
               {
                 icon: '金',
-                title: 'Fill with Gold',
-                desc: 'Find beauty in imperfection. Turn failures into features and bugs into breakthroughs.',
+                title: t('about.kintsugi2Title'),
+                desc: t('about.kintsugi2Desc'),
               },
               {
                 icon: '鍛',
-                title: 'Reforge',
-                desc: 'Rebuild stronger. Transform shattered concepts into polished, innovative solutions.',
+                title: t('about.kintsugi3Title'),
+                desc: t('about.kintsugi3Desc'),
               },
             ].map((item) => (
               <div

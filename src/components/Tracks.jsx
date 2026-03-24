@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { HiOutlineLightningBolt, HiOutlineShieldCheck, HiOutlineCube, HiOutlineCloud, HiOutlineSparkles } from 'react-icons/hi'
+import { useTranslation } from 'react-i18next'
 
 const tracks = [
   {
@@ -36,8 +37,42 @@ const tracks = [
 ]
 
 export default function Tracks() {
+  const { t } = useTranslation();
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  const tracks = [
+    {
+      icon: <HiOutlineLightningBolt className="text-3xl" />,
+      title: t('tracks.t1Title'),
+      desc: t('tracks.t1Desc'),
+      color: 'from-amber-500/20 to-yellow-600/5',
+    },
+    {
+      icon: <HiOutlineShieldCheck className="text-3xl" />,
+      title: t('tracks.t2Title'),
+      desc: t('tracks.t2Desc'),
+      color: 'from-kintsugi-gold/20 to-kintsugi-dark/5',
+    },
+    {
+      icon: <HiOutlineCube className="text-3xl" />,
+      title: t('tracks.t3Title'),
+      desc: t('tracks.t3Desc'),
+      color: 'from-orange-500/20 to-amber-600/5',
+    },
+    {
+      icon: <HiOutlineCloud className="text-3xl" />,
+      title: t('tracks.t4Title'),
+      desc: t('tracks.t4Desc'),
+      color: 'from-yellow-500/20 to-kintsugi-gold/5',
+    },
+    {
+      icon: <HiOutlineSparkles className="text-3xl" />,
+      title: t('tracks.t5Title'),
+      desc: t('tracks.t5Desc'),
+      color: 'from-kintsugi-glow/20 to-kintsugi-gold/5',
+    },
+  ]
 
   return (
     <section id="tracks" className="relative section-spacing bg-charcoal-800/30">
@@ -51,13 +86,13 @@ export default function Tracks() {
           transition={{ duration: 0.8 }}
         >
           <p className="section-label text-kintsugi-gold font-mono text-sm tracking-[0.2em] uppercase mb-4">
-            Choose Your Path
+            {t('tracks.label')}
           </p>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-            Hackathon <span className="text-kintsugi-gold gold-glow">Tracks</span>
+            {t('tracks.title1')}<span className="text-kintsugi-gold gold-glow">{t('tracks.title2')}</span>
           </h2>
           <p className="section-desc text-gray-400 text-base">
-            Select the track that matches your passion. Each path leads to unique challenges and opportunities.
+            {t('tracks.desc')}
           </p>
         </motion.div>
 

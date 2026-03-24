@@ -1,8 +1,10 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from 'react-i18next';
 
 export default function Countdown({ targetDate, isInView = true }) {
+  const { t } = useTranslation();
 
   const calculateTimeLeft = () => {
     const now = new Date().getTime();
@@ -37,10 +39,10 @@ export default function Countdown({ targetDate, isInView = true }) {
   }, [targetDate]);
 
   const items = [
-    { number: timeLeft.days, label: "Days" },
-    { number: timeLeft.hours, label: "Hours" },
-    { number: timeLeft.minutes, label: "Minutes" },
-    { number: timeLeft.seconds, label: "Seconds" },
+    { number: timeLeft.days, label: t('countdown.days') },
+    { number: timeLeft.hours, label: t('countdown.hours') },
+    { number: timeLeft.minutes, label: t('countdown.minutes') },
+    { number: timeLeft.seconds, label: t('countdown.seconds') },
   ];
 
   return (

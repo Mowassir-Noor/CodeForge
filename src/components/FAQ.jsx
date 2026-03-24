@@ -1,6 +1,7 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { HiPlus, HiMinus } from 'react-icons/hi'
+import { useTranslation } from 'react-i18next'
 
 const faqs = [
   {
@@ -77,8 +78,20 @@ function FAQItem({ faq, index, isInView }) {
 }
 
 export default function FAQ() {
+  const { t } = useTranslation();
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  const faqs = [
+    { q: t('faq.q1'), a: t('faq.a1') },
+    { q: t('faq.q2'), a: t('faq.a2') },
+    { q: t('faq.q3'), a: t('faq.a3') },
+    { q: t('faq.q4'), a: t('faq.a4') },
+    { q: t('faq.q5'), a: t('faq.a5') },
+    { q: t('faq.q6'), a: t('faq.a6') },
+    { q: t('faq.q7'), a: t('faq.a7') },
+    { q: t('faq.q8'), a: t('faq.a8') },
+  ];
 
   return (
     <section id="faq" className="relative section-spacing bg-charcoal-900">
@@ -92,10 +105,10 @@ export default function FAQ() {
           transition={{ duration: 0.8 }}
         >
           <p className="section-label text-kintsugi-gold font-mono text-sm tracking-[0.2em] uppercase mb-4">
-            Got Questions?
+            {t('faq.label')}
           </p>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-            <span className="text-kintsugi-gold gold-glow">FAQ</span>
+            <span className="text-kintsugi-gold gold-glow">{t('faq.title')}</span>
           </h2>
         </motion.div>
 

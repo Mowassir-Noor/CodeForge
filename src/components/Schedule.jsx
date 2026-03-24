@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const scheduleData = [
   {
@@ -110,8 +111,45 @@ const scheduleData = [
 ]
 
 export default function Schedule() {
+  const { t } = useTranslation();
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  const scheduleData = [
+    {
+      day: t('schedule.day1'),
+      events: [
+        { time: '17:30 - 19:00', title: t('schedule.reg'), desc: t('schedule.regDesc') },
+        { time: '19:00 - 20:00', title: t('schedule.dinner'), desc: t('schedule.dinnerDesc') },
+        { time: '20:00 - 21:00', title: t('schedule.pres'), desc: t('schedule.presDesc') },
+        { time: '21:00 - 21:30', title: t('schedule.kickoff'), desc: t('schedule.kickoffDesc') },
+        { time: '21:30 - 22:30', title: t('schedule.mentor1'), desc: t('schedule.mentor1Desc') },
+        { time: '01:00 - 01:30', title: t('schedule.snacks'), desc: t('schedule.snacksDesc') },
+      ],
+    },
+    {
+      day: t('schedule.day2'),
+      events: [
+        { time: '09:00 - 10:00', title: t('schedule.bfast'), desc: t('schedule.bfastDesc') },
+        { time: '11:00 - 13:00', title: t('schedule.ms1'), desc: t('schedule.ms1Desc') },
+        { time: '13:00 - 14:00', title: t('schedule.lunch'), desc: t('schedule.lunchDesc') },
+        { time: '15:00 - 18:00', title: t('schedule.ms2'), desc: t('schedule.ms2Desc') },
+        { time: '18:30 - 20:00', title: t('schedule.dinner2'), desc: t('schedule.dinner2Desc') },
+        { time: '01:00 - 01:30', title: t('schedule.snacks2'), desc: t('schedule.snacks2Desc') },
+      ],
+    },
+    {
+      day: t('schedule.day3'),
+      events: [
+        { time: '09:00 - 10:00', title: t('schedule.bfast3'), desc: t('schedule.bfast3Desc') },
+        { time: '10:00 - 12:30', title: t('schedule.ms3'), desc: t('schedule.ms3Desc') },
+        { time: '12:30 - 13:30', title: t('schedule.lunch'), desc: t('schedule.lunchDesc') },
+        { time: '14:00 - 14:30', title: t('schedule.freeze'), desc: t('schedule.freezeDesc') },
+        { time: '14:30 - 18:00', title: t('schedule.demo'), desc: t('schedule.demoDesc') },
+        { time: '18:00 - 19:00', title: t('schedule.ceremony'), desc: t('schedule.ceremonyDesc') },
+      ],
+    },
+  ]
 
   return (
     <section id="schedule" className="relative section-spacing bg-charcoal-900">
@@ -125,13 +163,13 @@ export default function Schedule() {
           transition={{ duration: 0.8 }}
         >
           <p className="section-label text-kintsugi-gold font-mono text-sm tracking-[0.2em] uppercase mb-4">
-            The Journey
+            {t('schedule.label')}
           </p>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-            Event <span className="text-kintsugi-gold gold-glow">Schedule</span>
+            {t('schedule.title1')}<span className="text-kintsugi-gold gold-glow">{t('schedule.title2')}</span>
           </h2>
           <p className="section-desc text-gray-400 text-base">
-            Three days of hacking, learning, and building. Here's what to expect.
+            {t('schedule.desc')}
           </p>
         </motion.div>
 

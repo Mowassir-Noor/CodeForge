@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { Suspense, lazy } from 'react'
+import { useTranslation } from 'react-i18next'
+import Countdown from './Countdown'
 
 const KintsugiScene = lazy(() => import('./KintsugiScene'))
 
@@ -172,6 +174,8 @@ function GoldParticles2D() {
 }
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal-900">
       {/* Dark gradient overlay */}
@@ -207,7 +211,7 @@ export default function Hero() {
             animate={{ opacity: 1, letterSpacing: '0.3em' }}
             transition={{ duration: 1.5, delay: 0.8 }}
             style={{ marginBottom: "0.5rem" }} >
-            {'{ May 8-10, 2026 }'}
+            {t('hero.date')}
           </motion.p>
         </motion.div>
 
@@ -222,12 +226,13 @@ export default function Hero() {
         </motion.h1>
 
         <motion.h2
-          className="font-heading text-lg sm:text-xl md:text-2xl text-kintsugi-gold/90 tracking-[0.15em] mb-2 gold-glow"
-          initial={{ opacity: 0, y: 20 }}
+className="font-heading text-xl sm:text-2xl md:text-3xl text-white/90 mt-6 mb-8 tracking-wider"          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.1 }}
-          style={{ marginBottom: "1rem" }}>
-          HACKATHON
+          style={{ marginBottom: "2rem",marginTop:"1rem",fontSize:"1rem" }}>
+          {/* {t('hero.hackathon')} */}
+          {t('hero.tagline1')}<span className="text-kintsugi-gold">{t('hero.tagline2')}</span>{t('hero.tagline3')}
+         
         </motion.h2>
 
         <motion.p
@@ -236,7 +241,8 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.4 }}
           style={{ marginBottom: "0.5rem" }}>
-          Build. <span className="text-kintsugi-gold">Break.</span> Reforge.
+          {/* {t('hero.tagline1')}<span className="text-kintsugi-gold">{t('hero.tagline2')}</span>{t('hero.tagline3')} */}
+         <Countdown targetDate="2026-05-01"  />
         </motion.p>
 
         <motion.p
@@ -245,9 +251,8 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.7 }}
           style={{ marginBottom: "2" }}>
-       Where broken ideas become breakthroughs. Push beyond limits, embrace every flaw,
-and rebuild stronger than before. Inspired by{' '}
-<span className="text-kintsugi-gold font-medium">imperfection</span> — the origin of innovation.
+       {t('hero.desc1')}
+<span className="text-kintsugi-gold font-medium">{t('hero.imperfection')}</span>{t('hero.desc2')}
         </motion.p>
 
         {/* <motion.div
@@ -260,21 +265,21 @@ and rebuild stronger than before. Inspired by{' '}
             href="#register"
             className="w-40 h-10  px-8 py-4 bg-gradient-to-r from-kintsugi-dark via-kintsugi-gold to-kintsugi-dark text-charcoal-900 font-heading font-bold text-sm tracking-wider rounded-lg hover:shadow-[0_0_30px_rgba(212,168,67,0.4)] transition-all duration-500 hover:scale-105 "
           >
-            REGISTER NOW
+            {t('hero.registerNow')}
           </a>
           <a
             href="#about"
             className="px-8 py-4 border border-kintsugi-gold/30 text-kintsugi-gold font-heading font-bold text-sm tracking-wider rounded-lg hover:bg-kintsugi-gold/10 hover:border-kintsugi-gold/50 transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,67,0.15)]"
           >
-            LEARN MORE
+            {t('hero.learnMore')}
           </a>
         </motion.div> */}
 
         <motion.div className="flex flex-col sm:flex-row gap-4 justify-center items-center" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 2 }} style={{ marginTop: "1rem" }} > 
           <a href="#register" className="w-44  h-10 px-8 py-4 flex items-center justify-center bg-gradient-to-r from-kintsugi-dark via-kintsugi-gold to-kintsugi-dark text-charcoal-900 font-heading font-bold text-sm tracking-wider rounded-lg hover:shadow-[0_0_30px_rgba(212,168,67,0.4)] transition-all duration-500 hover:scale-105" >
-            REGISTER NOW </a>
+            {t('hero.registerNow')} </a>
           <a href="#about" className="w-44 h-10 px-8 py-4 flex items-center justify-center border border-kintsugi-gold/30 text-kintsugi-gold font-heading font-bold text-sm tracking-wider rounded-lg hover:bg-kintsugi-gold/10 hover:border-kintsugi-gold/50 transition-all duration-500 hover:shadow-[0_0_20px_rgba(212,168,67,0.15)]" > 
-          LEARN MORE </a> </motion.div>
+          {t('hero.learnMore')} </a> </motion.div>
       </div>
 
       {/* Scroll indicator */}

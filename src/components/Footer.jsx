@@ -1,5 +1,6 @@
 import { FaXTwitter, FaDiscord, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa6'
 import { HiOutlineMail, HiOutlineLocationMarker } from 'react-icons/hi'
+import { useTranslation } from 'react-i18next'
 
 const socialLinks = [
   { icon: <FaXTwitter />, href: 'https://x.com/GaziCyber', label: 'Twitter/X' },
@@ -10,6 +11,8 @@ const socialLinks = [
 ]
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="relative bg-charcoal-900 border-t border-kintsugi-gold/10">
       <div className="kintsugi-divider" />
@@ -23,8 +26,7 @@ export default function Footer() {
               <span className="text-white">FORGE</span>
             </h3>
             <p className="text-gray-500 text-base leading-[1.8] mb-8">
-              Build. Break. Reforge. A hackathon inspired by the art of Kintsugi —
-              where imperfections become innovations.
+              {t('footer.desc')}
             </p>
             <div className="flex gap-4">
               {socialLinks.map((link) => (
@@ -43,17 +45,17 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="font-heading text-base font-bold text-kintsugi-gold/80 uppercase tracking-wider mb-6">
-              Quick Links
+              {t('footer.quick')}
             </h4>
             <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-              {['About', 'Tracks', 'Schedule', 'Prizes', 'Judges', 'FAQ', 'Register', 'Sponsors'].map(
+              {['about', 'tracks', 'schedule', 'prizes', 'judges', 'faq', 'register', 'sponsors'].map(
                 (link) => (
                   <a
                     key={link}
-                    href={`#${link.toLowerCase()}`}
+                    href={`#${link}`}
                     className="text-gray-500 text-base hover:text-kintsugi-gold transition-colors duration-300 py-1"
                   >
-                    {link}
+                    {t(`nav.${link}`)}
                   </a>
                 )
               )}
@@ -63,7 +65,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h4 className="font-heading text-base font-bold text-kintsugi-gold/80 uppercase tracking-wider mb-6">
-              Contact
+              {t('footer.contact')}
             </h4>
             <div className="space-y-4">
               <a
@@ -76,9 +78,9 @@ export default function Footer() {
               <div className="flex items-start gap-3 text-gray-500 text-base">
                 <HiOutlineLocationMarker className="text-xl shrink-0 mt-1" />
                 <div className="space-y-1">
-                  <p>Innovation Hub</p>
-                  <p>Gazi University</p>
-                  <p>Ankara, Turkey</p>
+                  <p>{t('footer.hub')}</p>
+                  <p>{t('footer.uni')}</p>
+                  <p>{t('footer.ankara')}</p>
                 </div>
               </div>
             </div>
@@ -88,17 +90,17 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-charcoal-600/50 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-600 text-xs">
-            &copy; 2026 CodeForge Hackathon. All rights reserved.
+            {t('footer.rights')}
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-gray-600 text-xs hover:text-kintsugi-gold transition-colors">
-              Privacy Policy
+              {t('footer.privacy')}
             </a>
             <a href="#" className="text-gray-600 text-xs hover:text-kintsugi-gold transition-colors">
-              Code of Conduct
+              {t('footer.conduct')}
             </a>
             <a href="#" className="text-gray-600 text-xs hover:text-kintsugi-gold transition-colors">
-              Terms
+              {t('footer.terms')}
             </a>
           </div>
         </div>
